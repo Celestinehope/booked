@@ -35,14 +35,14 @@ Route::get('/auth/{provider}/redirect',[ProviderController::class,'redirect']);
 Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
  
 //Route::get('/auth/google/redirect', function () {
-  //  return Socialite::driver('google')->redirect();
+ //  return Socialite::driver('google')->redirect();
 //});
  
 //Route::get('/auth/google/callback', function () {
-  //  $user = Socialite::driver('google')->user();
+  //$user = Socialite::driver('google')->user();
  
     
-// });
+//});
 
 
-//require _DIR_.'/auth.php';
+require __DIR__.'/auth.php';
