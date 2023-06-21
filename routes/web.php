@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 //Route:: 
+//well you see
 
 Route::get('/dashboard', function () {
     return view('dashboard');
