@@ -1,4 +1,8 @@
+<title>Login</title>
+
 <x-guest-layout>
+
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 <div class="w-full flex justify-center mx-2">
@@ -44,7 +48,7 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
+            <x-primary-button class="getstarted scrollto" >
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
