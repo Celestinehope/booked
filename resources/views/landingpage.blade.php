@@ -212,8 +212,8 @@
                 </div>
                 <div class="col-md-6 icon-box">
                   <i class="bx bx-shield"></i>
-                  <h4>Beatae veritatis</h4>
-                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                  <h4>Personalized Recommendations</h4>
+                  <p>advanced algorithm analyzes your reading preferences and suggests books tailored to your tastes, helping you discover new authors and genres that align with your interests.</p>
                 </div>
               </div>
             </div><!-- End .content-->
@@ -314,33 +314,33 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <h4 class="title"><a href="">Extensive Book Collection</a></h4>
+            <p class="description"> vast catalog of books across various genres</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            <h4 class="title"><a href="">Convenient Book Delivery</a></h4>
+            <p class="description"> Enjoy the convenience of doorstep book delivery. We partner with trusted shipping providers to ensure that your books are delivered safely and promptly</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            <h4 class="title"><a href="">Personalized Recommendations</a></h4>
+            <p class="description">Discover new books tailored to your reading preferences.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <h4 class="title"><a href="">Secure Payment Options</a></h4>
+            <p class="description">We offer secure payment gateways, allowing you to make hassle-free purchases with confidence.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            <h4 class="title"><a href="">Book Renting</a></h4>
+            <p class="description">Removing the commitment of buying a book, aloowing for the </p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <h4 class="title"><a href="">Book Wishlist</a></h4>
+            <p class="description">Mark books as read, rate them, and maintain a list of books you plan to read in the future. Never lose sight of the books you love or the ones you can't wait to explore.</p>
           </div>
         </div>
 
@@ -348,7 +348,7 @@
     </section><!-- End Services Section -->
 
     <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
+    <!--<section id="why-us" class="why-us">
       <div class="container">
 
         <div class="section-title">
@@ -385,7 +385,9 @@
         </div>
 
       </div>
-    </section><!-- End Why Us Section -->
+    </section>
+            -->
+            <!-- End Why Us Section -->
 
     <!-- ======= Portfolio Section ======= -->
     <!--<section id="portfolio" class="portfolio">
@@ -555,10 +557,10 @@
 
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member">
-              <img src="{{asset('import/assets/img/team/team-1.jpg')}}" class="img-fluid" alt="">
+              <img src="{{asset('import/assets/img/team/team-4.jpg')}}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Walter White</h4>
+                  <h4>Jerome Mbugua</h4>
                   <span>Chief Executive Officer</span>
                   <div class="social">
                     <a href=""><i class="bi bi-twitter"></i></a>
@@ -576,7 +578,7 @@
               <img src="{{asset('import/assets/img/team/team-2.jpg')}}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
+                  <h4>Sarah Laura</h4>
                   <span>Product Manager</span>
                   <div class="social">
                     <a href=""><i class="bi bi-twitter"></i></a>
@@ -591,10 +593,10 @@
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="member">
-              <img src="{{asset('import/assets/img/team/team-3.jpg')}}" class="img-fluid" alt="">
+              <img src="{{asset('import/assets/img/team/team-1.jpg')}}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>William Anderson</h4>
+                  <h4>William Tonui</h4>
                   <span>CTO</span>
                   <div class="social">
                     <a href=""><i class="bi bi-twitter"></i></a>
@@ -609,10 +611,10 @@
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
             <div class="member">
-              <img src="{{asset('import/assets/img/team/team-4.jpg')}}" class="img-fluid" alt="">
+              <img src="{{asset('import/assets/img/team/team-3.jpg')}}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
+                  <h4>Amanda Lerato</h4>
                   <span>Accountant</span>
                   <div class="social">
                     <a href=""><i class="bi bi-twitter"></i></a>
@@ -706,7 +708,7 @@
 
         <div class="section-title">
           <h2>Frequently Asked Questions</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>How long does it take for books to be delivered</p>
         </div>
 
         <div class="faq-list">
@@ -715,7 +717,7 @@
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                 <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                What payment methods do you accept
                 </p>
               </div>
             </li>
@@ -837,7 +839,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Groovin</h3>
+              <h3>Booked</h3>
               <p>
                 A108 Adam Street <br>
                 NY 535022, USA<br><br>
@@ -865,7 +867,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <!--<div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
@@ -875,6 +877,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
           </div>
+            -->
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
