@@ -18,7 +18,7 @@
     <body class="font-sans text-White-900 antialiased" >
         <div style="background-image: url({{asset('import/assets/img/29.jpg')}});" class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-green-100 dark:bg-brown-900">
             <div >
-                <a href="/" style="font-type:bold;" class="logo" >
+                <a href="/" style="font-type:bold; color:white; " class="logo" >
                      BOOKED
                 </a>
             </div>
