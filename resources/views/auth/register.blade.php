@@ -1,10 +1,5 @@
-<title>Register Now!</title>
-<x-guest-layout>
-    
-    
 
-    
-    
+<x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -53,8 +48,8 @@
             <x-primary-button class="ml-4">
                 {{ __('Register') }}
             </x-primary-button>
+            
+           
         </div>
     </form>
-
-
 </x-guest-layout>

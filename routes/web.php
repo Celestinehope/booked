@@ -20,8 +20,7 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
-//Route:: 
-//well you see
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
