@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ProviderController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', function () {
     return view('landingpage');
 });
+
+/*Route::get('/userdashboard', function () {
+    return view('sample');
+});*/
+Route::get('/view', function () {
+    return view('viewproduct');
+});
+Route::get('/product', [ProductsController::class, 'index']);
 
 
 
