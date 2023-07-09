@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ProviderController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be to the "web" middleware group. Make something great!
 |
 */
 
@@ -20,9 +21,19 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
+//vendor dashboard
 Route::get('/vendordash', function () {
     return view('vendordashboard');
 });
+
+/*Route::get('/userdashboard', function () {
+    return view('sample');
+});*/
+Route::get('/view', function () {
+    return view('viewproduct');
+});
+Route::get('/product', [ProductsController::class, 'index']);
+
 
 
 Route::get('/dashboard', function () {
