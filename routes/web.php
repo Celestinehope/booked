@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
+Route::get('/vendordash', function () {
+    return view('vendordashboard');
+});
 
 
 Route::get('/dashboard', function () {
