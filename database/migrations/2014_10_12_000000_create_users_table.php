@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role',['admin','vendor','user'])->default('user');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->string('provider_id')->nullable();
             $table->string('provider')->nullable();
-            $table->string('provider_token')->nullable();
+            $table->string('provider_token',255)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

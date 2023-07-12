@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('book_description');
             $table->integer('book_quantity');
             $table->integer('book_price');
+            $table->string('book_author');
             $table->foreignId('category_id')->references('category_id')->on('categories')->onDelete('cascade');
+            $table->foreignId('vendor_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('book_image');
             $table->timestamps();
         });
