@@ -46,8 +46,8 @@ Version Control: The project is managed using a version control system like Git,
 
 ## Contributors
 
-Hope Celestine (john.doe@example.com)
-Precious Boruett (jane.smith@example.com)
+Hope Celestine
+Precious Boruett 
 
 ## License
 
