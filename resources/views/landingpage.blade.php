@@ -76,6 +76,8 @@
           <li>
              
                <a href="{{ route('register') }}" class="getstarted scrollto">Sign Up</a>
+               <a href="{{ route('vendorregister') }}" class="getstarted scrollto">Sign Up as Vendor</a>
+                  
                   
 
             </li>
