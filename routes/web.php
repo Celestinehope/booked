@@ -7,6 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\FormController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
