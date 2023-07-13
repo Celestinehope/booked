@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\BookController;
+
 
 
 /*
