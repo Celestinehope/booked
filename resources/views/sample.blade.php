@@ -15,6 +15,11 @@
         <link href="{{asset('import/assets/css/style.css')}}" rel="stylesheet">
     </head>
     <body>
+        @if(session('success'))
+        <div>
+            {{session('success')}}
+        </div>
+        @endif
         <!-- Navigation-->
 
 
@@ -51,11 +56,63 @@
              
               
                 <form class="getstarted scrollto" >
-                        <button class="btn btn-outline-dark" type="submit" style="color:white;">
-                            <i class="bi-cart-fill me-1"></i>
+                <li class="nav-item dropdown">
+                     <button class="btn btn-outline-dark" type="submit" style="color:white;">
+                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="cart" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                                     <span class="badge bg-dark text-white ms-1 rounded-pill">{{count((array) session('cart')) }}</span>
+                        </a>
+                    </button>
+                        
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" > 
+                                <div>
+                                    @php $total = 0@endphp
+                                    @foreach((array) session('cart') as $id=> $details)
+                                    @php $total += $details['price']*$details['quantity'] @endphp
+                                    @endforeach
+
+                                    <div>
+                                        <p>Total: $ {{$total}}</p>
+                                    </div>
+
+                                </div>
+
+                                </a></li>
+
+                               
+                                @if(session('cart'))
+                                   @foreach(session('cart') as $id=> $details)
+                                   <li><a class="dropdown-item" > 
+                                   <div>
+                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['photo']}}"/>
+                                   </div>
+                                   <div>
+                                    <p>{{$details['product_name']}}</p>
+                                    <p>{{$details['price']}}</p>
+                                    <p class="count">Quantity:{{$details['quantity']}}</p>
+                                   </div>
+                                   </a>
+                                   </li>
+                                   @endforeach
+
+                                @endif
+                                
+                               
+                                <li><a class="dropdown-item" >Popular Items</a></li>
+                                <li><hr class="dropdown-divider" /></li>                            
+                                
+                                <li>
+                                    <a class="dropdown-item" href="#!"><div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="cart">View all</a></div>
+                                
+                            </div></a>
+                           </li>
+                              
+                            </ul>
+                        </li>
                     </form>
               
                   
@@ -158,7 +215,8 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('viewproduct', ['id' => $product->id]) }}">View options</a></div>
                             </div>
                         </div>
                     </div>
