@@ -5,10 +5,7 @@ use App\Http\Controllers\Auth\ProviderController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\VendorController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,37 +32,12 @@ Route::get('/vendordashboard', [BookController::class, 'show']);
 /*Route::get('/userdashboard', function () {
     return view('sample');
 });*/
-//admin dashboard
-Route::get('/admindashboard', function () {
-    return view('admin/admindashboard');
-});
-
 Route::get('/view', function () {
     return view('viewproduct');
 });
+Route::get('/product', [ProductsController::class, 'index']);
 
-Route::get('/vendorregister',[VendorController::class, 'show'])->name('vendorregister');
-Route::post('/addedvendorapplicant',[VendorController::class,'addvendorapplicant']);
-
-//show add book form
-Route::get('/addbookform', function () {
-    return view('vendor.addproductform');
-})->middleware('auth');
-
-//Route::get('/product', [BookController::class, 'index']);
-
-//add book
-Route::post('/addedbook', [BookController::class, 'addbooks'])->middleware('auth');
-
-//vendor accept
-Route::get('/applicant/{applicant}/accept', [VendorController::class, 'acceptvendor']);
-
-//vendor deny
-Route::delete('/applicant/{applicant}/deny', [VendorController::class, 'denyvendor']);
-
-//show vendor applicants
-Route::get('/showvendorapplicants', [VendorController::class, 'showvendors']);
-
+Route::post('/submit-order', [FormController::class, 'submitHire'])->name('submit-order');
 
 
 //edit book information
