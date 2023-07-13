@@ -37,7 +37,7 @@
 						<div class="booking-bg">
 							<div class="form-header">
 								<h2>Add Books</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+								
 							</div>
 						</div>
 						<form method=POST action="/addedbook" enctype="multipart/form-data">

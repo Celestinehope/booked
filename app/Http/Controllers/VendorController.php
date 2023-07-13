@@ -26,11 +26,7 @@ class VendorController extends Controller
             'vendor_type' => 'required',
             'vendor_contact' => 'required',
             'vendor_description' => 'required',
-            
-            
-            
-            
-    
+        
             ]);
     
             if ($request->hasFile('vendor_image')) {
@@ -106,4 +102,11 @@ class VendorController extends Controller
         $del->delete();
         return redirect('/showvendorapplicants')->with('message', 'Vendor applicant denied');
     }
+
+      //show accepted vendors
+    public function showvendorsaccepted(){
+
+        $applicants=Vendor::all();
+        return view('admin.displayallvendors',compact('applicants'));
     }
+}

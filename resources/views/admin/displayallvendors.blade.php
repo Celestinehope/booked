@@ -315,19 +315,6 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">Categories</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/addcategoryform">Add new Category</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/displaycategories">View Categories</a></li>
-              </ul>
-            </div>
-          </li>
         
          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -344,6 +331,10 @@
             </div>
           </li> -->
 
+          
+         
+
+          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="icon-grid-2 menu-icon"></i>
@@ -357,6 +348,7 @@
               </ul>
             </div>
           </li>
+
 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
@@ -410,33 +402,49 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Categories</p>
+                  <p class="card-title">All Vendors</p>
+                   @include('layouts.message')
                   <div class="row">
                     <div class="col-12">
                       <div class="table-responsive">
                         <table id="example" class="display expandable-table" style="width:100%">
                           <thead>
                             <tr>
-                              <th>Category ID</th>
-                              <th>Category Name</th>
+                              <th>Vendor ID</th>
+                              <th>Vendor Name</th>
+                              <th>Vendor Email</th>
+                              <th>Vendor Address</th>
+                              <th>Vendor Type</th>
+                        <!--      <th>Vendor Contact</th> -->
+                              <th>Vendor Description</th>
+                              <th>Vendor Certification</th>
+                              <th>Vendor Image</th>
                               <th></th>
-                              <th></th>
+                              
                             </tr>
                           </thead>
-                          @foreach ($categories as $category)
+                          @foreach ($applicants as $applicant)
                           <tbody> 
 <tr>
-    <td> {{ $category->category_id }} </td>
+    <td> {{ $applicant->vendoraccepted_id }} </td>
+    <td> {{ $applicant->vendoraccepted_name }} </td>
+    <td> {{ $applicant->vendoraccepted_email }} </td>
+    <td> {{ $applicant->vendoraccepted_address }} </td>
+    <td> {{ $applicant->vendoraccepted_type }} </td>
+    <!--<td> {{ $applicant->vendoraccepted_contact }} </td> -->
+    <td> {{ $applicant->vendoraccepted_description }} </td>
+    <td> <img class="d-block w-100" src="{{ $applicant->vendoraccepted_certification? asset('storage/' . $applicant->vendoraccepted_certification) : asset('images/no-image.jpg') }}"alt="Vendor Certification" class="img-fluid img-thumbnail" > </td>
+    <td> <img class="d-block w-100" src="{{ $applicant->vendoraccepted_image ? asset('storage/' . $applicant->vendoraccepted_image) : asset('images/no-image.jpg') }}"alt="Vendor Image" class="img-fluid img-thumbnail" > </td>
 
-    <td> {{ $category->category_name }} </td>
-    <td>     <a href="/category/{{ $category->category_id }}/edit" class="btn btn-primary btn-sm">Edit</a>
-          <form method="POST" action="/category/{{ $category->category_id }}/delete">
+    
+    <td>      
+         <form method="POST" action="/applicant/{{ $applicant->vendoraccepted_id }}/deny">
                 @csrf
                 @method('DELETE')
                 <button onclick="return confirm('Are you sure you want to delete this book record?')"
                 
-                    class="text-red-500" class="btn btn-primary btn-sm"> Delete</button>
-            </form>       
+                     class="btn btn-primary btn-sm"> Remove vendor</button>
+            </form>       </td>
 
 </tr>
                           </tbody>

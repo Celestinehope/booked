@@ -71,7 +71,7 @@
                                 <div>
                                     @php $total = 0@endphp
                                     @foreach((array) session('cart') as $id=> $details)
-                                    @php $total += $details['price']*$details['quantity'] @endphp
+                                    @php $total += $details['book_price']*$details['book_quantity'] @endphp
                                     @endforeach
 
                                     <div>
@@ -87,12 +87,12 @@
                                    @foreach(session('cart') as $id=> $details)
                                    <li><a class="dropdown-item" > 
                                    <div>
-                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['photo']}}"/>
+                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['book_image']}}"/>
                                    </div>
                                    <div>
-                                    <p>{{$details['product_name']}}</p>
-                                    <p>{{$details['price']}}</p>
-                                    <p class="count">Quantity:{{$details['quantity']}}</p>
+                                    <p>{{$details['book_name']}}</p>
+                                    <p>{{$details['book_price']}}</p>
+                                    <p class="count">Quantity:{{$details['book_quantity']}}</p>
                                    </div>
                                    </a>
                                    </li>
@@ -174,26 +174,26 @@
                                     @php $total = 0@endphp
                                     @if(session('cart'))
                                    @foreach(session('cart') as $id=> $details)
-                                   @php $total += $details['price']*$details['quantity'] @endphp
+                                   @php $total += $details['book_price']*$details['book_quantity'] @endphp
                                 
                                    
                                    
                                 <tr data-id="{{ $id }}">
                                     
-                                    <td>{{$details['product_name']}}</td>
-                                    <td><img src="{{asset('import/assets/img')}}/{{$details['photo']}}" width="100" height="100"> </td>
-                                    <td>{{$details['price']}}</td>
+                                    <td>{{$details['book_name']}}</td>
+                                    <td><img src="{{asset('import/assets/img')}}/{{$details['book_image']}}" width="100" height="100"> </td>
+                                    <td>{{$details['book_price']}}</td>
                                     
                                     <td><small id="emailHelp" class="form-text text-muted">Change the quantity over here</small>
-                                    <input type="number" value="{{$details['quantity']}}" class="quantity swc cart_update" min="1"/></td>
+                                    <input type="number" value="{{$details['book_quantity']}}" class="quantity swc cart_update" min="1"/></td>
                                     <td>{{$total}}</td>
                             
                                     <td><a class="btn btn-outline-dark mt-auto cart_remove" href="">Delete</a></td>
                                     
-                                    <input type="hidden" name="product_id" value="{{ $id }}">
-                                    <input type="hidden" name="product_name" value="{{$details['product_name']}}">
-                                    <input type="hidden" name="product_price" value="{{$details['price']}} ">
-                                    <input type="hidden" name="product_quantity" value="{{$details['quantity']}}">
+                                    <input type="hidden" name="book_id" value="{{ $id }}">
+                                    <input type="hidden" name="book_name" value="{{$details['book_name']}}">
+                                    <input type="hidden" name="book_price" value="{{$details['book_price']}} ">
+                                    <input type="hidden" name="book_quantity" value="{{$details['book_quantity']}}">
                                     <input type="hidden" name="type" value="bought">
                                     <input type="hidden" name="total" value="{{$total}}">
 

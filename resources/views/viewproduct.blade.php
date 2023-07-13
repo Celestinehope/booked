@@ -71,7 +71,7 @@
                                 <div>
                                     @php $total = 0@endphp
                                     @foreach((array) session('cart') as $id=> $details)
-                                    @php $total += $details['price']*$details['quantity'] @endphp
+                                    @php $total += $details['book_price']*$details['book_quantity'] @endphp
                                     @endforeach
 
                                     <div>
@@ -87,12 +87,15 @@
                                    @foreach(session('cart') as $id=> $details)
                                    <li><a class="dropdown-item" > 
                                    <div>
-                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['photo']}}"/>
+                                   <img style="width:100px; height:auto;"src="{{ $book->book_image ? asset('storage/' . $book->book_image) : asset('images/no-image.jpg') }}"/>
+                                    <!--<img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['book_image']}}"/> -->
                                    </div>
+
+                                   
                                    <div>
-                                    <p>{{$details['product_name']}}</p>
-                                    <p>{{$details['price']}}</p>
-                                    <p class="count">Quantity:{{$details['quantity']}}</p>
+                                    <p>{{$details['book_name']}}</p>
+                                    <p>{{$details['book_price']}}</p>
+                                    <p class="count">Quantity:{{$details['book_quantity']}}</p>
                                    </div>
                                    </a>
                                    </li>
@@ -154,20 +157,20 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                
                
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset('import/assets/img')}}/{{$product->photo}}" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset('import/assets/img')}}/{{$book->book_image}}" alt="..." /></div>
                     <div class="col-md-6">
                         <div class="small mb-1"></div>
-                        <h1 class="display-5 fw-bolder">{{$product->product_name}}</h1>
+                        <h1 class="display-5 fw-bolder">{{$book->book_name}}</h1>
                         
                         <div class="fs-5 mb-5">
                             <span class="text-decoration-line-through"></span>
-                            <span>${{$product->price}}</span>
+                            <span>${{$book->book_price}}</span>
                         </div>
-                        <p class="lead">{{$product->product_description}}. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <p class="lead">{{$book->book_description}}. </p>
                         <div class="d-flex">
-                            <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="{{$product['quantity']}}" min="1"style="max-width: 3rem" />-->
+                            <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="{{$book['book_quantity']}}" min="1"style="max-width: 3rem" />-->
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <a class="btn btn-outline-dark mt-auto" href="{{route('add_to_cart',$product->id)}}">
+                            <a class="btn btn-outline-dark mt-auto" href="{{route('add_to_cart',$book->book_id)}}">
                                 <i class="bi-cart-fill me-1"></i>
                                
                                 
@@ -176,7 +179,7 @@
                             </button>
                             <br>
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <a class="btn btn-outline-dark mt-auto" href="{{route('borrow',$product->id)}}">
+                            <a class="btn btn-outline-dark mt-auto" href="{{route('borrow',$book->book_id)}}">
                                 <i class="bi-cart-fill me-1"></i>
                                 Hire book
                             </a>

@@ -126,7 +126,7 @@ class ProductsController extends Controller
         }
         */
     public function index(){
-        $products= Book::all();
+        $products= Product::all();
         return view('sample',compact('products'));
     }
 

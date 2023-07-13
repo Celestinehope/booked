@@ -37,7 +37,7 @@
 						<div class="booking-bg">
 							<div class="form-header">
 								<h2>Edit Book</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+								
 							</div>
 						</div>
 						<form method=POST action="/book/{{ $book->book_id }}/update" enctype="multipart/form-data">

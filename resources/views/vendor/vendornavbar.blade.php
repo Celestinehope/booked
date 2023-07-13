@@ -47,20 +47,7 @@
                   </li>
 -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li>
-             
-              
-                <form class="getstarted scrollto" >
-                        <button class="btn btn-outline-dark" type="submit" style="color:white;">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-              
-                  
-
-            </li>
+          
 
           <!--<li><div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))

@@ -71,7 +71,7 @@
                                 <div>
                                     @php $total = 0@endphp
                                     @foreach((array) session('cart') as $id=> $details)
-                                    @php $total += $details['price']*$details['quantity'] @endphp
+                                    @php $total += $details['book_price']*$details['book_quantity'] @endphp
                                     @endforeach
 
                                     <div>
@@ -87,12 +87,12 @@
                                    @foreach(session('cart') as $id=> $details)
                                    <li><a class="dropdown-item" > 
                                    <div>
-                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['photo']}}"/>
+                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['book_image']}}"/>
                                    </div>
                                    <div>
-                                    <p>{{$details['product_name']}}</p>
-                                    <p>{{$details['price']}}</p>
-                                    <p class="count">Quantity:{{$details['quantity']}}</p>
+                                    <p>{{$details['book_name']}}</p>
+                                    <p>{{$details['book_price']}}</p>
+                                    <p class="count">Quantity:{{$details['book_quantity']}}</p>
                                    </div>
                                    </a>
                                    </li>
@@ -188,19 +188,19 @@
         <section class="py-5"  style="background-image: url({{asset('import/assets/img/27.jpg')}});">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @if(!empty($products))
-                 @foreach ($products as $product)
+                @if(!empty($books))
+                 @foreach ($books as $book)
                     <div class="col mb-5">
-                        <div class="card h-100"  style="background-image: url({{asset('import/assets/img')}}/{{$product->photo}})" >
+                        <div class="card h-100"  style="background-image: url({{asset('import/assets/img')}}/{{$book->book_image}})" >
                             <!-- Product image
-                            <img class="card-img-top" src="{{asset('import/assets/img')}}/{{$product->photo}}" alt="..." />
+                            <img class="card-img-top" src="{{asset('import/assets/img')}}/{{$book->photo}}" alt="..." />
                             --><!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h4 class="fw-bolder">{{$product->product_name}}</h4>
+                                    <h4 class="fw-bolder">{{$book->book_name}}</h4>
                                     <!-- Product reviews-->
-                                    <h5 class="fw-bolder">{{$product->product_description}}</h5>
+                                    <h5 class="fw-bolder">{{$book->book_description}}</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -210,13 +210,13 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    ${{$product->price}}
+                                    ${{$book->book_price}}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('viewproduct', ['id' => $product->id]) }}">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('viewproduct', ['id' => $book->book_id]) }}">View options</a></div>
                             </div>
                         </div>
                     </div>

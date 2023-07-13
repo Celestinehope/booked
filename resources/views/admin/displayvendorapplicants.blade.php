@@ -332,43 +332,24 @@
           </li> -->
 
           
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">Vendors</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/showvendorapplicants">Vendor applicants</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/vendorsaccepted">Vendors</a></li>
-              </ul>
-            </div>
-          </li>
+         
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Users</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="/showusers">Show all users</a></li>
-            </div>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Vendors</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/tables/basic-table.html')}}">Basic table</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/showvendorapplicants">Vendor applicants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/vendorsaccepted">Vendors</a></li>>
               </ul>
             </div>
           </li>
+
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="icon-contract menu-icon"></i>

@@ -7,16 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Carbon;
 
 class BookController extends Controller
 {
-    public function index(){
-        $products= Book::all();
-        return view('sample',compact('products'));
-    }
-
-    
-
     //store book information
     public function addbooks(Request $request)
     {
@@ -139,4 +133,121 @@ class BookController extends Controller
    // return view('vendor.editbookform',['book'=> $book]);
 
     //}
+
+
+    //user module
+    public function index(){
+        $books= Book::all();
+        return view('sample',compact('books'));
+    }
+
+    public function cart(){
+        
+        return view('cart');
+    }
+
+    public function openView($id){
+
+        $book = Book::find($id);
+        if (!$book) {
+            abort(404);
+        }
+
+        return view('viewproduct', ['book' => $book]);
+    }
+    public function borrow($id){
+
+        $books= Book::findOrFail($id);
+
+        $borrow= session()->get('borrow',[]);
+       // $futureDate = Carbon::now()->addDays(14)->format('Y-m-d');
+       
+    
+
+        if(isset($cart[$id])){
+            $borrow[$id]['book_quantity']++;
+        } else{
+            $borrow[$id]=[
+                'book_name' => $books->product_name,
+                'book_image'=>$books->photo,
+                'book_price'=>$books->price,
+                'book_quantity'=>$books->quantity,
+            ];
+        }
+        session()->put('borrow',$borrow);
+        return view('hire',['book' => $borrow,]);
+      //  'futureDate' => $futureDate
+    }
+    
+
+    public function addToCart($id){
+
+        $books= Book::findOrFail($id);
+
+        $cart= session()->get('cart',[]);
+
+        if(isset($cart[$id])){
+            $cart[$id]['quantity']++;
+        } else{
+            $cart[$id]=[
+                'book_name' => $books->book_name,
+                'book_image'=>$books->book_image,
+                'book_price'=>$books->book_price,
+                'book_quantity'=>1,
+            ];
+        }
+        session()->put('cart',$cart);
+        return redirect()->back()->with('success','Product successfully added to cart!');
+
+    }
+
+    public function buy($id){
+
+        $books= Book::findOrFail($id);
+
+        $buy= session()->get('buy',[]);
+               
+
+        if(isset($cart[$id])){
+            $buy[$id]['book_quantity']++;
+        } else{
+            $buy[$id]=[
+                'book_name' => $books->book_name,
+                'book_price'=>$books->book_price,
+                'book_quantity'=>$books->book_quantity,
+                'bought'
+            ];
+        }
+        session()->put('buy',$buy);
+        return view('checkout',['book' => $buy]);
+         
+    
+
+    }
+    
+    public function update(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["book_quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+
+    public function remove(Request $request)
+    {   
+        if($request->id){
+            $cart = session()->get('cart');
+
+            if (isset($cart[$request->id])){
+                unset($cart[$request->id]);
+                session()->put('cart',$cart);
+            }
+            session()->flash('success','Product successfully removed!');
+
+        }
+
+        }
+        
 }
