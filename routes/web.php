@@ -87,6 +87,13 @@ Route::delete('/applicant/{applicant}/deny', [VendorController::class, 'denyvend
 
 //show vendor applicants
 Route::get('/showvendorapplicants', [VendorController::class, 'showvendors']);
+//edit category information
+Route::get('/category/{category}/edit', [BookController::class, 'categoryedit']);
+//update category details
+Route::put('/category/{category}/update', [BookController::class, 'categoryupdate']);
+
+//delete category
+Route::delete('/category/{category}/delete', [BookController::class, 'categorydelete']);
 
 //show all vendors  
 Route::get('/vendorsaccepted', [VendorController::class, 'showvendorsaccepted']);
