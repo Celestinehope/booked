@@ -12,10 +12,10 @@ class FormController extends Controller
 {
     public function submitForm(Request $request)
     {
-        $id = $request->input('product_id');
-        $name = $request->input('product_name');
-        $price = $request->input('product_price');
-        $quantity= $request->input('product_quantity');
+        $id = $request->input('book_id');
+        $name = $request->input('book_name');
+        $price = $request->input('book_price');
+        $quantity= $request->input('book_quantity');
         $type = $request->input('type');
         $total = $request->input('total');
 
@@ -24,10 +24,10 @@ class FormController extends Controller
         // Redirect or return a response
 
         return view('checkout')->with([
-            'product_id' => $id,
-            'product_name' => $name,
-            'product_price' => $price,
-            'product_quantity' => $quantity,
+            'book_id' => $id,
+            'book_name' => $name,
+            'book_price' => $price,
+            'book_quantity' => $quantity,
             'type' => $type,
             'total' => $total
         ]);

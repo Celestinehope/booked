@@ -39,6 +39,7 @@ Route::put('/book/{book}/update', [BookController::class, 'bookupdate']);
 Route::delete('/book/{book}/delete', [BookController::class, 'delete']);
 
 Route::get('/vendorregister',[VendorController::class, 'show'])->name('vendorregister');
+
 Route::post('/addedvendorapplicant',[VendorController::class,'addvendorapplicant']);
 
 Route::get('/dashboard', function () {
@@ -105,15 +106,20 @@ Route::get('/vendorsaccepted', [VendorController::class, 'showvendorsaccepted'])
 Route::get('/product', [BookController::class, 'index'])->middleware('auth','verified');
 Route::get('/cart', [BookController::class, 'cart'])->name('cart');
 Route::get('products/cart', [BookController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [BookController::class, 'addToCart'])->name('add_to_cart');
+Route::get('add-to-cart', [BookController::class, 'addToCart'])->name('add_to_cart');
 Route::get('add-to-order/{id}', [BookController::class, 'borrow'])->name('borrow');
 Route::get('/products/{id}', [BookController::class, 'openView'])->name('viewproduct');
-Route::post('/checkout', [FormController::class, 'submitForm'])->name('checkout');
+//Route::post('/checkout', [FormController::class, 'submitForm'])->name('checkout');
 
 Route::patch('update-cart', [BookController::class, 'update'])->name('update_cart');
 Route::delete('remove-from-cart', [BookController::class, 'remove'])->name('remove_from_cart');
 
-Route::post('/submit-order', [FormController::class, 'submitHire'])->name('submit-order');
+Route::post('/submit-order', [BookController::class, 'borrowToCart'])->name('submitOrder');
+Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
+Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+Route::get('/data/{category}', 'BookController@showByCategory')->name('data.byCategory');
+
 
 require __DIR__.'/auth.php';
 

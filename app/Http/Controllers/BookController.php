@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Carbon;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -172,32 +172,34 @@ class BookController extends Controller
     }
     public function borrow($id){
 
-        $books= Book::findOrFail($id);
+        $books= Book::with('vendor')->findOrFail($id);
 
         $borrow= session()->get('borrow',[]);
-       // $futureDate = Carbon::now()->addDays(14)->format('Y-m-d');
+        $futureDate = Carbon::now()->addDays(14)->format('Y-m-d');
        
     
 
-        if(isset($cart[$id])){
-            $borrow[$id]['book_quantity']++;
-        } else{
-            $borrow[$id]=[
-                'book_name' => $books->product_name,
-                'book_image'=>$books->photo,
-                'book_price'=>$books->price,
-                'book_quantity'=>$books->quantity,
-            ];
-        }
-        session()->put('borrow',$borrow);
-        return view('hire',['book' => $borrow,]);
-      //  'futureDate' => $futureDate
+        $borrow = [
+            'book_id'=> $books->book_id,
+            'book_name' => $books->book_name,
+            'book_description' => $books->book_description,
+            'book_price' => 20,
+            'book_quantity' => 1,
+            'book_author' => $books->book_author,
+            'vendor_name' => $books->vendor->vendoraccepted_name
+        ];
+        return view('hire',compact('borrow', 'futureDate'));
+        
     }
     
 
-    public function addToCart($id){
+    public function addToCart(Request $request){
+        $id = $request->query('book_id');
+        $type = $request->query('type');
+        $cost = $request->query('cost');
 
         $books= Book::findOrFail($id);
+        
 
         $cart= session()->get('cart',[]);
 
@@ -207,7 +209,35 @@ class BookController extends Controller
             $cart[$id]=[
                 'book_name' => $books->book_name,
                 'book_image'=>$books->book_image,
-                'book_price'=>$books->book_price,
+                
+                'book_price'=>$cost,
+                'book_type'=> $type,
+                'book_quantity'=>1,
+            ];
+        }
+        session()->put('cart',$cart);
+        return redirect()->back()->with('success','Product successfully added to cart!');
+
+    }
+    public function borrowToCart(Request $request){
+        $id = $request->query('book_id');
+        $type = $request->query('type');
+        $cost = $request->query('cost');
+
+        $books= Book::findOrFail($id);
+        
+
+        $cart= session()->get('cart',[]);
+
+        if(isset($cart[$id])){
+            $cart[$id]['quantity']++;
+        } else{
+            $cart[$id]=[
+                'book_name' => $books->book_name,
+                'book_image'=>$books->book_image,
+                
+                'book_price'=>$cost,
+                'book_type'=> $type,
                 'book_quantity'=>1,
             ];
         }
@@ -264,5 +294,14 @@ class BookController extends Controller
         }
 
         }
+
+
+        public function showByCategory(Category $category)
+{
+    $data = $category->data;
+    
+    return view('data.index', compact('data'));
+}
+
         
 }

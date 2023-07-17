@@ -34,6 +34,7 @@
                 
                 <th>Book</th>
                 <th>Book image</th>
+                <th>Type</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
@@ -44,36 +45,38 @@
         </thead>
 
         <tbody>
-
-                                    @php $total = 0@endphp
-                                    @if(session('cart'))
-                                   @foreach(session('cart') as $id=> $details)
-                                   @php $total += $details['book_price']*$details['book_quantity'] @endphp
+        
+                                   @php $total += $price*$quantity @endphp
                                 
-                                   
+                                  <!--'book_id' => $id,
+            'book_name' => $name,
+            'book_price' => $price,
+            'book_quantity' => $quantity,
+            'type' => $type,
+            'total' => $total--> 
                                    
                                 <tr data-id="{{ $id }}">
                                     
-                                    <td>{{$details['book_name']}}</td>
+                                    <td>{{$name}}</td>
                                     <td><img src="{{asset('import/assets/img')}}/{{$details['book_image']}}" width="100" height="100"> </td>
-                                    <td>{{$details['book_price']}}</td>
+                                    <td>{{$type}}</td>
+                                    <td>{{$book->book_name}}</td>
                                     
                                     <td><small id="emailHelp" class="form-text text-muted">Change the quantity over here</small>
-                                    <input type="number" value="{{$details['book_quantity']}}" class="quantity swc cart_update" min="1"/></td>
+                                    <input type="number" value="{{$quantity}}" class="quantity swc cart_update" min="1"/></td>
                                     <td>{{$total}}</td>
                             
                                     <td><a class="btn btn-outline-dark mt-auto cart_remove" href="">Delete</a></td>
                                     
-                                    <input type="hidden" name="book_id" value="{{ $id }}">
+                                   <!-- <input type="hidden" name="book_id" value="{{ $id }}">
                                     <input type="hidden" name="book_name" value="{{$details['book_name']}}">
                                     <input type="hidden" name="book_price" value="{{$details['book_quantity']}} ">
                                     <input type="hidden" name="book_quantity" value="{{$details['book_quantity']}}">
-                                   <!-- <input type="hidden" name="type" value="bought"> -->
-                                    <input type="hidden" name="total" value="{{$total}}">
+                                    <input type="hidden" name="type" value="bought"> 
+                                    <input type="hidden" name="total" value="{{$total}}">-->
 
                                 </tr>
-                                @endforeach
-                                @endif
+                               
           
     
     </tbody>

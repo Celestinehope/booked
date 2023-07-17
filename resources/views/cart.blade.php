@@ -87,7 +87,7 @@
                                    @foreach(session('cart') as $id=> $details)
                                    <li><a class="dropdown-item" > 
                                    <div>
-                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['book_image']}}"/>
+                                    <img style="width:100px; height:auto;" src="{{ asset('storage/' . $details['book_image']) }}"/>
                                    </div>
                                    <div>
                                     <p>{{$details['book_name']}}</p>
@@ -152,7 +152,7 @@
 
 <br><br><br><br>
 
-<form method="POST" action="{{ route('checkout') }}">
+<form method="POST" action="/session">
             @csrf
             <table class="table table-bordered">
   <thead>
@@ -160,6 +160,7 @@
                 
     <th scope="col">Book</th>
                 <th scope="col">Book image</th>
+                <th scope="col">Type</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Subtotal</th>
@@ -175,18 +176,20 @@
                                     @if(session('cart'))
                                    @foreach(session('cart') as $id=> $details)
                                    @php $total += $details['book_price']*$details['book_quantity'] @endphp
+                                   
                                 
                                    
                                    
                                 <tr data-id="{{ $id }}">
                                     
                                     <td>{{$details['book_name']}}</td>
-                                    <td><img src="{{asset('import/assets/img')}}/{{$details['book_image']}}" width="100" height="100"> </td>
+                                    <td><img src="{{ asset('storage/' . $details['book_image']) }}" width="100" height="100"> </td>
+                                    <td>{{$details['book_type']}}</td>
                                     <td>{{$details['book_price']}}</td>
                                     
                                     <td><small id="emailHelp" class="form-text text-muted">Change the quantity over here</small>
                                     <input type="number" value="{{$details['book_quantity']}}" class="quantity swc cart_update" min="1"/></td>
-                                    <td>{{$total}}</td>
+                                    <td data-th="Subtotal" class="text-center">${{ $details['book_price'] * $details['book_quantity'] }}</td>
                             
                                     <td><a class="btn btn-outline-dark mt-auto cart_remove" href="">Delete</a></td>
                                     

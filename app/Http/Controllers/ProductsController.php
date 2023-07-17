@@ -127,7 +127,7 @@ class ProductsController extends Controller
         */
     public function index(){
         $products= Product::all();
-        return view('sample',compact('products'));
+        return view('dashboard',compact('products'));
     }
 
     public function cart(){

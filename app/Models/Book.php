@@ -23,5 +23,16 @@ class Book extends Model
         'vendor_id'
     ];
 
+    public function vendor()
+{
+    return $this->belongsTo(Vendor::class);
+}
+
+public function category()
+{
+    return $this->belongsTo(Category::class);
+}
+
+
  
 }

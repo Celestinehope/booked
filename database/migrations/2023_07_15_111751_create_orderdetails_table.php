@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('orderdetails_duration_start');
             $table->date('orderdetails_duration_end');
             $table->foreignId('book_id')->references('book_id')->on('books')->onDelete('cascade');
-            $table->foreignId('order_id')->references('order_id')->on('order')->onDelete('cascade');
+            $table->foreignId('order_id')->references('order_id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }
