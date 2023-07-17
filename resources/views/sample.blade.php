@@ -87,7 +87,7 @@
                                    @foreach(session('cart') as $id=> $details)
                                    <li><a class="dropdown-item" > 
                                    <div>
-                                    <img style="width:100px; height:auto;"src="{{asset('import/assets/img')}}/{{$details['book_image']}}"/>
+                                    <img style="width:100px; height:auto;" src="{{ asset('storage/' . $details['book_image']) }}"/>
                                    </div>
                                    <div>
                                     <p>{{$details['book_name']}}</p>
@@ -105,10 +105,13 @@
                                 <li><hr class="dropdown-divider" /></li>                            
                                 
                                 <li>
-                                    <a class="dropdown-item" href="#!"><div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="cart">View all</a></div>
+                                    
+                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <a class="btn btn-outline-dark mt-auto dropdown-item" href="cart">View all</a>
+                                </div>
                                 
-                            </div></a>
+                            </div>
                            </li>
                               
                             </ul>
@@ -191,7 +194,7 @@
                 @if(!empty($books))
                  @foreach ($books as $book)
                     <div class="col mb-5">
-                        <div class="card h-100"  style="background-image: url({{asset('import/assets/img')}}/{{$book->book_image}})" >
+                        <div class="card h-100"  style="background-image: url({{ asset('storage/' . $book->book_image) }}" alt="Book Image">
                             <!-- Product image
                             <img class="card-img-top" src="{{asset('import/assets/img')}}/{{$book->photo}}" alt="..." />
                             --><!-- Product details-->

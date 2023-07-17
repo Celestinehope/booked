@@ -14,54 +14,72 @@
 </head>
 <body>
  
-<form method="POST" action="{{ route('submit-order') }}">
-  <div class="form-group">
-  @if(session('borrow'))
-    @foreach(session('borrow') as $id=> $need)     
+<form method="POST" action="{{ route('submitOrder') }}">
+ 
+ 
+        
 
         
        @csrf
-
-       <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="{{$need['book_name']}}" disabled>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  
+      
+       
   <div class="col-12">
     <label for="inputAddress" class="form-label">Book Name</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="{{$need['book_name']}}" disabled>
+    <input type="text" class="form-control" id="inputAddress" name="book_name" value="{{ $borrow['book_name'] }}" disabled>
   </div>
+
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Book Description</label>
+    <input type="text" class="form-control" id="inputAddress" value="{{ $borrow['book_description'] }}" disabled>
+  </div>
+
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Book Author</label>
+    <input type="text" class="form-control" id="inputAddress" value="{{ $borrow['book_author'] }}" disabled>
+  </div>
+
   <div class="col-12">
     <label for="inputAddress" class="form-label">Host</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="vendor_name" disabled>
+    <input type="text" class="form-control" id="inputAddress" value="{{ $borrow['vendor_name'] }}" disabled>
   </div>
+
   <div class="col-12">
     <label for="inputAddress" class="form-label">Cost</label>
-    <input type="number" class="form-control" id="inputAddress" value="20" disabled>
-    <small id="emailHelp" class="form-text text-muted">Borrowing a book costs kshs.20 per book borrowed</small>
-    <small id="emailHelp" class="form-text text-muted">The standard timeline given for borrowing a book is 14 days</small>
-    <small id="emailHelp" class="form-text text-muted">Card used to pay with will be on hold until book is returned</small>
-    <small id="emailHelp" class="form-text text-muted">Failure to return book on time will result in a fine of 100 per day</small>
+    <input type="number" class="form-control" id="inputAddress" name="book_price" value="20" disabled>
+
   </div>
+
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Cost</label>
+    <input type="text" name="date" value="{{ $futureDate }}" disabled>
+
+  </div>
+  
+                                   <input type="hidden" name="book_id" value="{{ $borrow['book_id'] }}">
+                                    <!--<input type="hidden" name="quantity" value="1">-->
+                                    <input type="hidden" name="type" value="borrowed">
+
+
+  
 
                                 
 
-                                  <input type="hidden" name="book_id" value="{{ $id }}">
-                                    <input type="hidden" name="book_name" value="{{$need['book_name']}}">
-                                    <input type="hidden" name="book_price" value="20 ">
-                                    <input type="hidden" name="book_quantity" value="1">
-                                    <input type="hidden" name="type" value="borrowed">
                                     
 
     
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary"><a class="btn btn-outline-dark mt-auto" href="{{route('add_to_cart',['book_id' => $borrow['book_id'], 'type' => 'borrowed', 'cost' => 20])}}">
+                                <i class="bi-cart-fill me-1"></i>
+                               
+                                
+                                Buy book
+                                </a></button>
 
 
   
 </form>
-@endforeach
-        @endif
+
+        
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -157,7 +157,7 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                
                
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{asset('import/assets/img')}}/{{$book->book_image}}" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ asset('storage/' . $book->book_image) }}" alt="..." /></div>
                     <div class="col-md-6">
                         <div class="small mb-1"></div>
                         <h1 class="display-5 fw-bolder">{{$book->book_name}}</h1>
@@ -170,7 +170,7 @@
                         <div class="d-flex">
                             <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="{{$book['book_quantity']}}" min="1"style="max-width: 3rem" />-->
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <a class="btn btn-outline-dark mt-auto" href="{{route('add_to_cart',$book->book_id)}}">
+                            <a class="btn btn-outline-dark mt-auto" href="{{route('add_to_cart',['book_id' => $book->book_id, 'type' => 'bought','cost' => $book->book_price])}}">
                                 <i class="bi-cart-fill me-1"></i>
                                
                                 
@@ -185,6 +185,10 @@
                             </a>
                             </button>
                         </div>
+                        <small id="emailHelp" class="form-text text-muted">Borrowing a book costs kshs.20 per book borrowed</small>
+    <small id="emailHelp" class="form-text text-muted">The standard timeline given for borrowing a book is 14 days</small>
+    <small id="emailHelp" class="form-text text-muted">Card used to pay with will be on hold until book is returned</small>
+    <small id="emailHelp" class="form-text text-muted">Failure to return book on time will result in a fine of 100 per day</small>
                     </div>
                 </div>
             </div>

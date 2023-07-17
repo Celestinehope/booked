@@ -15,4 +15,13 @@ class Category extends Model
         
     ];
 
+    // Category.php
+
+public function books()
+{
+    return $this->hasMany(Book::class);
+}
+
+
+
 }
