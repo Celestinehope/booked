@@ -51,7 +51,7 @@
 									
 								
 							<div class="form-btn">
-								<button class="submit-btn">Edit Category</button>
+								<button class="submit-btn">Update Category</button>
 							</div>
 
     </div>

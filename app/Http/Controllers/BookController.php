@@ -31,7 +31,6 @@ class BookController extends Controller
 
         $data['vendor_id'] = auth()->id();
         
-
         Book::create($data);
 
         return redirect('/vendordashboard')->with('message', 'Book added successfully');
@@ -83,7 +82,14 @@ class BookController extends Controller
     {
         $book = Book::where('book_id', $book_id)->first();
         $book->delete();
-        return redirect('/vendordashboard')->with('message', 'Pet deleted successfully');
+        return redirect('/vendordashboard')->with('message', 'Book deleted successfully');
+    }
+
+    public function categorydelete($category)
+    {
+        $del = Category::where('category_id', $category)->first();
+        $del->delete();
+        return redirect('/displaycategories')->with('message', 'Category deleted successfully');
     }
 
     //admin add new category
@@ -125,7 +131,7 @@ class BookController extends Controller
         ]);
         $category->update($data);
 
-        return redirect('/admin/admindashboard')->with('message', 'Category updated successfully');
+        return redirect('/admindashboard')->with('message', 'Category updated successfully');
     }
 
     //public function bookedit(Book $book){
