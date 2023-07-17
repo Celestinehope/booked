@@ -34,7 +34,7 @@
                  <nav id="navbar" class="navbar">
                      <ul>
                          
-                         <li><a class="nav-link scrollto" href="{{ route('start')}}">Start Shopping</a></li>
+                         <li><a class="nav-link scrollto" href="/product">Start Shopping</a></li>
                          <li><a class="nav-link scrollto" href="route('profile.edit')"> {{ __('Profile') }} </a></li>
                          <form method="POST" action="{{ route('logout') }}">
                             @csrf
