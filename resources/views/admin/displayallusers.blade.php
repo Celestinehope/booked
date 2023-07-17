@@ -26,8 +26,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{{asset('import/admin/assets/images/logo.svg')}}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('import/admin/assets/images/logo-mini.svg')}}" alt="logo"/></a>
+        BOOKED
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -94,21 +93,30 @@
               </a>
             </div>
           </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('import/admin/assets/images/faces/face28.jpg')}}" alt="profile"/>
+          <li class="nav-item dropdown">
+          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+          <h6 class="preview-subject font-weight-normal">{{ Auth::user()->name }}</h6>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a>
-            </div>
-          </li>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            
+          <a class="dropdown-item preview-item">                                         
+                  <x-responsive-nav-link class="nav-link"
+                         :href="route('profile.edit')">
+                         {{ __('Profile') }}                    
+                    </x-responsive-nav-link>               
+                              
+                 <form method="POST" action="{{ route('logout') }}" class="nav-link" >
+                            @csrf
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();"> 
+                                                 {{ __('Log Out') }}        
+</a>                       
+                        </form>               
+            
+
+            
+</li>
           <li class="nav-item nav-settings d-none d-lg-flex">
             <a class="nav-link" href="#">
               <i class="icon-ellipsis"></i>
@@ -332,65 +340,46 @@
           </li> -->
 
           
+         
+
+          
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
+            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+              <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">Vendors</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
+            <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/showvendorapplicants">Vendor applicants</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/showvendorapplicants">Vendor applicants</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/vendorsaccepted">Vendors</a></li>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Users</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="/showusers">Show all users</a></li>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">Tables</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/tables/basic-table.html')}}">Basic table</a></li>
-              </ul>
-            </div>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="icon-contract menu-icon"></i>
-              <span class="menu-title">Icons</span>
+              <span class="menu-title">Users</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/icons/mdi.html')}}">Mdi icons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/showallusers">View all users</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">Orders</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/samples/login.html')}}"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/samples/register.html')}}"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href=""> Pending orders </a></li>
+                <li class="nav-item"> <a class="nav-link" href=""> Completed orders </a></li>
               </ul>
             </div>
           </li>
@@ -421,7 +410,7 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Vendor Applicants</p>
+                  <p class="card-title">All Vendors</p>
                    @include('layouts.message')
                   <div class="row">
                     <div class="col-12">
@@ -429,40 +418,35 @@
                         <table id="example" class="display expandable-table" style="width:100%">
                           <thead>
                             <tr>
-                              <th>Vendor ID</th>
-                              <th>Vendor Name</th>
-                              <th>Vendor Email</th>
-                              <th>Vendor Address</th>
-                              <th>Vendor Type</th>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Role</th>
                         <!--      <th>Vendor Contact</th> -->
-                              <th>Vendor Description</th>
-                              <th>Vendor Certification</th>
-                              <th>Vendor Image</th>
+                              
                               <th></th>
                               
                             </tr>
                           </thead>
-                          @foreach ($applicants as $applicant)
+                          @foreach ($users as $user)
                           <tbody> 
 <tr>
-    <td> {{ $applicant->id }} </td>
-    <td> {{ $applicant->vendor_name }} </td>
-    <td> {{ $applicant->vendor_email }} </td>
-    <td> {{ $applicant->vendor_address }} </td>
-    <td> {{ $applicant->vendor_type }} </td>
-    <!--<td> {{ $applicant->vendor_contact }} </td> -->
-    <td> {{ $applicant->vendor_description }} </td>
-    <td> <img class="d-block w-100" src="{{ $applicant->vendor_certification? asset('storage/' . $applicant->vendor_certification) : asset('images/no-image.jpg') }}"alt="Vendor Certification" class="img-fluid img-thumbnail" > </td>
-    <td> <img class="d-block w-100" src="{{ $applicant->vendor_image ? asset('storage/' . $applicant->vendor_image) : asset('images/no-image.jpg') }}"alt="Vendor Image" class="img-fluid img-thumbnail" > </td>
-
+    <td> {{ $user->id }} </td>
+    <td> {{ $user->name }} </td>
+    <td> {{ $user->email }} </td>
+    <td> {{ $user->role }} </td>
+    <td> {{ $user->vendoraccepted_type }} </td>
     
-    <td>     <a href="/applicant/{{ $applicant->id }}/accept" class="btn btn-primary btn-sm">Accept</a> 
-         <form method="POST" action="/applicant/{{ $applicant->id }}/deny">
+    <td> {{ $user->vendoraccepted_description }} </td>
+  
+
+    <td>      
+         <form method="POST" action="/user/{{ $user->id }}/deny">
                 @csrf
                 @method('DELETE')
-                <button onclick="return confirm('Are you sure you want to delete this book record?')"
+                <button onclick="return confirm('Are you sure you want to remove this user?')"
                 
-                     class="btn btn-primary btn-sm"> Deny</button>
+                     class="btn btn-primary btn-sm"> Remove user</button>
             </form>       </td>
 
 </tr>

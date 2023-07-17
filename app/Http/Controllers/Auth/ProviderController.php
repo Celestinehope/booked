@@ -58,7 +58,7 @@ try{
     }
 
 Auth::login($user);     
-return redirect('/dashboard');
+return redirect('/product');
 
 }catch(\Exception $e){
     return redirect ('/login');

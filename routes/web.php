@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
-Route::get('/vendordashboard', [BookController::class, 'show']);
+Route::get('/vendordashboard', [BookController::class, 'show'])->middleware('auth');
 
 Route::get('/view', function () {
     return view('viewproduct');
@@ -45,19 +46,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //admin dashboard
-Route::get('/admindashboard', function () {
-    return view('admin/admindashboard');
-});
+Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->middleware('auth');
 
 
-Route::get('/addbookform', function () {
-    return view('vendor.addproductform');
-})->middleware('auth');
+
 
 //Route::get('/product', [BookController::class, 'index']);
 
 //add book
 Route::post('/addedbook', [BookController::class, 'addbooks'])->middleware('auth');
+
+Route::get('/addbookform', [BookController::class, 'addbookform'])->middleware('auth');
 
 Route::get('/addcategoryform', function () {
     return view('admin.addnewcategory');
@@ -85,8 +84,13 @@ Route::get('/applicant/{applicant}/accept', [VendorController::class, 'acceptven
 //vendor deny
 Route::delete('/applicant/{applicant}/deny', [VendorController::class, 'denyvendor']);
 
+Route::post('/email/{applicant}/verification-notification', [EmailVerificationNotificationController::class, 'accepted'])
+                 ->middleware('throttle:6,1');
+
 //show vendor applicants
 Route::get('/showvendorapplicants', [VendorController::class, 'showvendors']);
+
+Route::get('/showallusers', [AdminController::class, 'showallusers']);
 //edit category information
 Route::get('/category/{category}/edit', [BookController::class, 'categoryedit']);
 //update category details
@@ -98,7 +102,7 @@ Route::delete('/category/{category}/delete', [BookController::class, 'categoryde
 //show all vendors  
 Route::get('/vendorsaccepted', [VendorController::class, 'showvendorsaccepted']);
 //user module
-Route::get('/product', [BookController::class, 'index']);
+Route::get('/product', [BookController::class, 'index'])->middleware('auth','verified');
 Route::get('/cart', [BookController::class, 'cart'])->name('cart');
 Route::get('products/cart', [BookController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [BookController::class, 'addToCart'])->name('add_to_cart');

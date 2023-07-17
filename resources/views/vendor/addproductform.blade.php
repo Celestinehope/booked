@@ -70,9 +70,9 @@
 									<div class="form-group">
 										<label for="category_id" class="form-label">Category</span>
 										<select class="form-control" name="category_id">
-											<option value="1">Romance</option>
-											<option value="2">Fantasy</option>
-											<option value ="3"> Thriller</option>
+											@foreach($categories as $category)
+											<option value="{{$category->category_id}}">{{$category->category_name}}</option>
+											@endforeach
 										</select>
 										<span class="select-arrow"></span>
 									</div>

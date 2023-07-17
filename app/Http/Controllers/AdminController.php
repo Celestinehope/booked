@@ -5,18 +5,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function AdminDashboard(){
-        
-    return view('admin/admindashboard');
-    }//end method
 
-    public function showusers(){
+    
 
-        $users=User::all();
-        return view('admin.displayallusers',compact('users'));
+    public function admindashboard(){
+        if (auth()->user()->role != "admin") {
+           abort(403, 'Unauthorized Action! This page is for administrators only');
+       }
+       return view('admin.admindashboard');
+   }
+   public function showallusers(){
 
-    }
+    $users=User::all();
+    return view('admin.displayallusers',compact('users'));
+}
+
+   
 }

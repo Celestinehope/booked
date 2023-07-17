@@ -71,10 +71,9 @@
 									<div class="form-group">
 										<label for="category_id" class="form-label">Category</span>
 										<select class="form-control" value="{{$book->category_id}}" name="category_id">
-											<option value="{{$book->category_id}}">-select-</option>
-                                            <option value="1">Romance</option>
-											<option value="2">Fantasy</option>
-											<option>3</option>
+										@foreach($categories as $category)
+											<option value="{{$category->category_id}}">{{$category->category_name}}</option>
+											@endforeach
 										</select>
 										<span class="select-arrow"></span>
 									</div>
@@ -86,7 +85,7 @@
                                         row="10"
                                         class="border border-gray-200 rounded p-2 w-full input100"
                                         class="form-control"> 
-                                        {{$book->category_id}}
+                                        {{$book->book_description}}
                                         </textarea>						
 									</div>
                                     <div class="col-md-6">

@@ -93,21 +93,30 @@
               </a>
             </div>
           </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('import/admin/assets/images/faces/face28.jpg')}}" alt="profile"/>
+          <li class="nav-item dropdown">
+          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+          <h6 class="preview-subject font-weight-normal">{{ Auth::user()->name }}</h6>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a>
-            </div>
-          </li>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            
+          <a class="dropdown-item preview-item">                                         
+                  <x-responsive-nav-link class="nav-link"
+                         :href="route('profile.edit')">
+                         {{ __('Profile') }}                    
+                    </x-responsive-nav-link>               
+                              
+                 <form method="POST" action="{{ route('logout') }}" class="nav-link" >
+                            @csrf
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();"> 
+                                                 {{ __('Log Out') }}        
+</a>                       
+                        </form>               
+            
+
+            
+</li>
           <li class="nav-item nav-settings d-none d-lg-flex">
             <a class="nav-link" href="#">
               <i class="icon-ellipsis"></i>
@@ -352,29 +361,29 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="icon-contract menu-icon"></i>
-              <span class="menu-title">Icons</span>
+              <span class="menu-title">Users</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/icons/mdi.html')}}">Mdi icons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/showallusers">View all users</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
+              <span class="menu-title">Orders</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/samples/login.html')}}"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{asset('import/admin/assets/pages/samples/register.html')}}"> Register </a></li>
+                <li class="nav-item"> <a class="nav-link" href=""> Pending orders </a></li>
+                <li class="nav-item"> <a class="nav-link" href=""> Completed orders </a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+   <!--       <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
               <i class="icon-ban menu-icon"></i>
               <span class="menu-title">Error pages</span>
@@ -392,7 +401,7 @@
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </nav>
 
@@ -436,7 +445,10 @@
     <td> <img class="d-block w-100" src="{{ $applicant->vendor_image ? asset('storage/' . $applicant->vendor_image) : asset('images/no-image.jpg') }}"alt="Vendor Image" class="img-fluid img-thumbnail" > </td>
 
     
-    <td>     <a href="/applicant/{{ $applicant->id }}/accept" class="btn btn-primary btn-sm">Accept</a> 
+    <td>     <form method="POST" action="/email/{applicant}/verification-notification">
+            @csrf
+            <a href="/applicant/{{ $applicant->id }}/accept" class="btn btn-primary btn-sm">Accept</a>
+        </form>
          <form method="POST" action="/applicant/{{ $applicant->id }}/deny">
                 @csrf
                 @method('DELETE')

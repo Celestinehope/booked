@@ -45,10 +45,10 @@ class BookController extends Controller
         //return view('vendordashboard')
       //  ->with('books', $books);
     }
-//update book information form
+//edit book information form
     public function bookedit(Book $book){
-
-    return view('vendor.editbookform',['book'=> $book]);
+        $categories = Category::all();
+    return view('vendor.editbookform',['book'=> $book],['categories'=> $categories]);
 
     }
     //update book information submission
@@ -84,6 +84,12 @@ class BookController extends Controller
         $book->delete();
         return redirect('/vendordashboard')->with('message', 'Book deleted successfully');
     }
+      //add book form
+    public function addbookform()
+    {
+        $categories = Category::all();
+        return view('vendor.addproductform',compact('categories'));
+        }
 
     public function categorydelete($category)
     {
@@ -143,6 +149,9 @@ class BookController extends Controller
 
     //user module
     public function index(){
+         if (auth()->user()->role != "user") {
+            abort(403, 'Unauthorized Action! This page is for book customers only');
+        }
         $books= Book::all();
         return view('sample',compact('books'));
     }

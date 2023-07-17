@@ -85,8 +85,8 @@ class VendorController extends Controller
             $del = Vendorapplicant::where('id', $applicant)->first();
             $del->delete();
             
-            $load->sendEmailVerificationNotification();
-            Auth::login($load);    
+            $user->sendEmailVerificationNotification();
+            Auth::login($user);    
         
     
         

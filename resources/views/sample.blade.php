@@ -35,23 +35,31 @@
                          <li><a class="nav-link scrollto" href="#services">Services</a></li>
                          <li><a class="nav-link scrollto" href="#team">Team</a></li>
                          <li><a class="nav-link scrollto"  href="#faq">FAQ</a></li>
-                  <!--<li class=s"dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                         <li><a class="nav-link scrollto"  href="#faq">Contact</a></li>
+                  <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                      <li><a href="#">Drop Down 1</a></li>
-                      <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                        <ul>
-                          <li><a href="#">Deep Drop Down 1</a></li>
-                         
-                          
-                        </ul>
-                      </li>
-                      <li><a href="#">Drop Down 2</a></li>
-                      <li><a href="#">Drop Down 3</a></li>
-                      <li><a href="#">Drop Down 4</a></li>
+                      <li><a href="#"><x-responsive-nav-link class="nav-link"
+                         :href="route('profile.edit')">
+                            {{ __('Profile') }}                      
+                    </x-responsive-nav-link>
+</a></li>
+
+<li>
+<form method="POST" action="{{ route('logout') }}" class="nav-link" >
+                            @csrf
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+</a>
+                        </form>
+     
+</li>
+                     
                     </ul>
                   </li>
--->
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+          
           <li>
              
               
